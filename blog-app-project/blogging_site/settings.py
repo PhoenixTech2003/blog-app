@@ -1,3 +1,9 @@
+import environ
+import os
+env = environ.Env()
+
+
+
 """
 Django settings for blogging_site project.
 
@@ -17,6 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 COMPRESS_ROOT = BASE_DIR / 'blog_app/static/' 
 
+environ.Env.read_env(os.path.join(BASE_DIR,'.env'))
 COMPRESS_ENABLED = True
 
 STATICFILES_FINDERS = [
@@ -49,7 +56,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'compressor',
-    'blog_app'
+    'blog_app.apps.BlogAppConfig'
 ]
 
 MIDDLEWARE = [
@@ -86,10 +93,15 @@ WSGI_APPLICATION = 'blogging_site.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'USER': env("DB_USER"),
+        'PASSWORD': env("DB_PASSWORD"),
+        'HOST': env("DB_HOST"),
+        'PORT': env("DB_PORT"),
+        'NAME': env('DB_NAME'),
     }
 }
 
