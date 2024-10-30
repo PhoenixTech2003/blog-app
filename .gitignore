@@ -166,3 +166,4 @@ pyvenv.cfg
 include/
 node_modules/
 CACHE
+media/
