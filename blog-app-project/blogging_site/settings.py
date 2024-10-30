@@ -26,8 +26,12 @@ COMPRESS_ROOT = BASE_DIR / 'blog_app/static/'
 environ.Env.read_env(os.path.join(BASE_DIR,'.env'))
 COMPRESS_ENABLED = True
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_FINDERS = [
-
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
     'compressor.finders.CompressorFinder',
 ]
 
