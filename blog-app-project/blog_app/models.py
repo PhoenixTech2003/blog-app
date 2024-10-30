@@ -10,6 +10,10 @@ class BlogPost(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     author_id = models.ForeignKey(User,on_delete=models.CASCADE)
+    photo = models.ImageField(upload_to='blog_post_images', null=True)
+    
+    def __str__(self):
+        return self.title
     
 class Comment(models.Model):
     content =  models.TextField()
