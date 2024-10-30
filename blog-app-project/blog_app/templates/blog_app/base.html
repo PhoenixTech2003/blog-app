@@ -1,0 +1,47 @@
+{% load compress %} {% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Django + Tailwind CSS</title>
+
+    {% compress css%}
+    <link rel="stylesheet" href="{% static 'blog_app/output.css' %}" />
+    {% endcompress %}
+  </head>
+  <body class="bg-[#111827]">
+    <section class="px-4">
+        <nav class="flex justify-between items-center fixed w-screen px-20 bg-[#11182757] z-50  backdrop-blur-md">
+          <div class = "text-[#eab308] flex items-center font-extrabold text-2xl">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 100 100"
+              id="Christian"
+              width=60
+              height=60
+            >
+              <path
+                d="M50 12.5a6.236 6.236 0 0 0-6.25 6.25v14.583H29.167a6.236 6.236 0 0 0-6.25 6.25 6.236 6.236 0 0 0 6.25 6.25H43.75V81.25A6.236 6.236 0 0 0 50 87.5a6.236 6.236 0 0 0 6.25-6.25V45.833h14.583a6.236 6.236 0 0 0 6.25-6.25 6.236 6.236 0 0 0-6.25-6.25H56.25V18.75A6.236 6.236 0 0 0 50 12.5z"
+                color="#000"
+                overflow="visible"
+                style="marker: none"
+                fill="#eab308"
+                class="color000000 svgShape"
+              ></path>
+            </svg>
+            <p>Faith</p>
+          </div>
+          <ul class="text-white flex gap-10">
+            <li class="hover:text-[#FFD700]">Home</li>
+            <li class="hover:text-[#FFD700]">About</li>
+            <li class="hover:text-[#FFD700]">Blog</li>
+            <li class="hover:text-[#FFD700]">Contact</li>
+          </ul>
+        </nav>
+
+    </section>
+    {% block content%}{% endblock %}
+</html>
