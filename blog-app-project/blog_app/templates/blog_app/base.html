@@ -44,4 +44,17 @@
 
     </section>
     {% block content%}{% endblock %}
+    <footer class='bg-[#1f2937] flex justify-between items-center py-8 px-6 mt-10'>
+      <section>
+        <h3 class='text-[#eab308] text-xl font-bold'>Subscribe to our Newsletter</h3>
+        <div class="flex gap-4  py-4">
+          <input placeholder="Your Email" class='grow bg-[#293546] py-2 px-4 text-white rounded-xl border border-slate-600'></input>
+          <button class='bg-[#eab308] text-white font-medium px-8 rounded-md'>Subscribe</button>
+        </div>
+      </section>
+    
+      <div>
+        <p class='text-white'>&copy; {% now "Y" %} The Faith Blog. All rights Reserverd</p>
+      </div>
+    </footer>
 </html>
