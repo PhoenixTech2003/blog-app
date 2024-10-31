@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.db.models import Count
 
 User = get_user_model()
 
@@ -15,6 +16,9 @@ class BlogPost(models.Model):
     def __str__(self):
         return self.title
     
+    def top_liked_posts(self):
+        return self.objects.annotate(like_count=Count('like')).order_by('-like_count')[:5]
+    
 class Comment(models.Model):
     content =  models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
@@ -24,3 +28,6 @@ class Comment(models.Model):
 class Like(models.Model):
     post_id = models.ForeignKey(BlogPost,on_delete=models.CASCADE)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    
+    
+        
