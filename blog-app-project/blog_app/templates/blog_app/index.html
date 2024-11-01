@@ -1,7 +1,7 @@
 {% extends "blog_app/base.html" %}
 
 {%block content%}
-<main class="px-16">
+<main class="lg:px-16 grid">
     <section class='p-4 h-[70dvh] grid items-center'>
         <div>
             <h1 class = "text-4xl text-[#eab308] font-extrabold text-center p-4">
@@ -18,8 +18,8 @@
     </section>
 
     <section>
-        <h2 class="text-3xl font-bold text-[#eab308] py-4">Recent Posts</h2>
-        <section class="grid grid-cols-3 gap-6">
+        <h2 class="text-3xl font-bold text-[#eab308] p-4">Recent Posts</h2>
+        <section class="grid grid-cols-2 xl:grid-cols-3 gap-6 p-4">
 
             {% for blog in blogs %}
             <div class="bg-[#1f2937] py-6 px-4 rounded-xl grid">
@@ -50,10 +50,10 @@
         </section>
         </section>
         <section>
-            <h1 class="text-3xl font-bold text-[#eab308] py-4">
+            <h1 class="text-3xl font-bold text-[#eab308] p-4">
                 Popular Posts
             </h1>
-            <section>
+            <section class="p-4">
                 {% for post in top_posts %}
                 <div class="bg-[#1f2937] mt-4 p-4 rounded-md grid grid-cols-[0.2fr_2fr_1fr]">
                     <div class="grid items-center">
