@@ -1,0 +1,18 @@
+{% extends "blog_app/base.html" %} {%block content%}
+<main class="px-28 mt-20">
+  <h1 class="text-[#eab308] text-3xl font-extrabold">{{post.title}}</h1>
+  <p class="text-slate-400 text-lg">
+    Posted on {{post.created_at}} by {{post.author_id}}
+  </p>
+  <div class="grid justify-center">
+    <img class="max-w-full h-auto" src="{{post.photo.url}}" alt="" />
+  </div>
+  <div class="flex py-8 gap-6">
+    <div class="bg-[#eab308] w-4 rounded-sm">
+
+    </div>
+    <p class="text-white italic font-medium ">{{post.verse}}</p>
+  </div>
+  <div class="ck-content">{{post.content|safe}}</div>
+</main>
+{%endblock%}
