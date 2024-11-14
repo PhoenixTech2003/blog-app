@@ -1,0 +1,4 @@
+.ck-content p > span[style], .ck-content p{
+    color: #fff !important;
+    background-color: transparent !important;
+}
