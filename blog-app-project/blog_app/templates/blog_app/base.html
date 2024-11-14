@@ -6,13 +6,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Django + Tailwind CSS</title>
-
     <script defer src="{% static 'blog_app/blogApp.js' %}"></script>
     {% compress css %}
+    <link rel="stylesheet" href="{% static "blog_app/ck-editor-content.css" %}">
     <link rel="stylesheet" href="{% static 'blog_app/output.css' %}" />
+    
     {% endcompress %}
   </head>
-  <body class="bg-[#111827] grid">
+  <body class="bg-[#111827] h-screen grid">
+    
       <div class='bg-[#2935468a] backdrop-blur-3xl hidden fixed z-50  w-96 menu  p-8'>
         <div class='grid grid-rows-[0.5fr_2fr]'>
           <div>
@@ -51,11 +53,11 @@
           <li class="hover:text-[#FFD700]">Contact</li>
         </ul>
       </nav>
-    
+    <div></div>
     
     {% block content %}{% endblock %}
     
-    <footer class='bg-[#1f2937] grid justify-center lg:flex lg:justify-between items-center py-8 px-6 mt-10'>
+    <footer class='bg-[#1f2937] grid  justify-center lg:flex lg:justify-between items-center py-8 px-6 mt-10'>
       <section>
         <h3 class='text-[#eab308] text-xl font-bold text-center md:text-left'>Subscribe to our Newsletter</h3>
         <div class="flex gap-4 py-4">
