@@ -3,6 +3,7 @@
     "tailwindcss": "^3.4.14"
   },
   "scripts": {
-    "blogAppTailwind":"npx tailwindcss -i ./blog_app/static/blog_app/input.css -o ./blog_app/static/blog_app/output.css --watch"
+    "blogAppTailwind":"npx tailwindcss -i ./blog_app/static/blog_app/input.css -o ./blog_app/static/blog_app/output.css --watch",
+    "buildRequirements":"pip freeze > ../requirements.txt "
   }
 }
