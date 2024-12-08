@@ -30,7 +30,7 @@ STATIC_URL = '/static/'
 CKEDITOR_5_CUSTOM_CSS ='blog_app/ck-editor.css'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
+LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/v1/blog-app/'
 customColorPalette = [
         {
             'color': 'hsl(4, 90%, 58%)',
