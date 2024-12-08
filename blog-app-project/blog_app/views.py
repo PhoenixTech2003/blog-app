@@ -15,10 +15,10 @@ def blog_post(request, postId):
 
 def signup(request):
     if request.method == 'POST':
-        username = request.POST('username')
-        email = request.POST('email')
-        password = request.POST('password')
-        confirm_password = request.POST('confirm_password')
+        username = request.POST['username']
+        email = request.POST['email']
+        password = request.POST['password']
+        confirm_password = request.POST['confirm_password']
         if password != confirm_password:
             return redirect('signup')
         else:
@@ -34,4 +34,4 @@ def like_blog_post(request, postId):
         post.likes.remove(request.user)
     else:
         post.likes.add(request.user)
-    return redirect('post', pk = postId)
+    return redirect('post', postId = postId)
