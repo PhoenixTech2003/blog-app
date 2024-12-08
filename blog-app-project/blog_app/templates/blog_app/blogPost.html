@@ -14,5 +14,23 @@
     <p class="text-white italic font-medium ">{{post.verse}}</p>
   </div>
   <div class="ck-content">{{post.content|safe}}</div>
+
+  <div>
+  {% if user.is_authenticated %}
+    <form action="{% url 'like_blog_post' post.pk %}" method="post" class="text-white">
+      {%csrf_token%}
+      {% if user in post.likes.all %}
+        <button type="submit">{{post.total_likes}} Unlike</button>
+      {% else %}
+        <button type="submite">{{post.total_likes}} Like</button>
+      {% endif %}
+    </form>
+  {% else %}
+    <div>
+      <p class="text-white">{{post.total_likes}} Likes,  <a href="{% url 'login' %}">login to like the post</a></p>
+    </div>
+  {% endif %}
+  </div>
+
 </main>
 {%endblock%}
