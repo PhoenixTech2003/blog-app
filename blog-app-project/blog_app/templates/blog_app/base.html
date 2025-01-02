@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Django + Tailwind CSS</title>
     <script defer src="{% static 'blog_app/blogApp.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'django_summernote/summernote.css' %}">
+    <script src="{% static 'django_summernote/summernote.min.js' %}"></script>
     {% compress css %}
     <link rel="stylesheet" href="{% static "blog_app/ck-editor-content.css" %}">
     <link rel="stylesheet" href="{% static 'blog_app/output.css' %}" />
