@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404,redirect
-from .models import BlogPost, Like
+from .models import BlogPost, Like,Comment
 from django.contrib.auth.models import User 
 from django.contrib.auth.decorators import login_required
+from .forms import CommentForm
 
 # Create your views here.
 def index(request):
@@ -11,7 +12,26 @@ def index(request):
 
 def blog_post(request, postId):
     post = get_object_or_404(BlogPost, pk=postId)
-    return render(request,"blog_app/blogPost.html", {"post":post})
+    comments = Comment.objects.filter(post_id = post).order_by('-created_at')
+    if request.method == 'POST':
+        if request.user.is_authenticated:
+            form = CommentForm(request.POST)
+            if form.is_valid():
+                comment = form.save(commit=False)
+                comment.post_id = post
+                comment.user_id = request.user
+                comment.save()
+                return redirect('post', postId = post.pk)
+        else:
+            return redirect('login')
+    else:
+        form = CommentForm()
+    context = {
+        'post':post,
+        'comments': comments,
+        'form':form,
+    }
+    return render(request,"blog_app/blogPost.html", context)
 
 def signup(request):
     if request.method == 'POST':
