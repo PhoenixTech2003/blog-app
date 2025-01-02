@@ -97,6 +97,21 @@ CKEDITOR_5_CONFIGS = {
     }
 }
 
+SUMMERNOTE_CONFIG = {
+    'summernote': {
+        'width': '100%',
+        'height': '200px',  
+        'background':'black',
+    },
+    'toolbar': [
+        ['style', ['bold', 'italic', 'underline', 'clear']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['insert', ['link', 'picture']],
+        ['view', ['fullscreen']],
+    ],
+}
+
+
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -130,7 +145,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'compressor',
     'django_ckeditor_5',
-    'blog_app.apps.BlogAppConfig'
+    'blog_app.apps.BlogAppConfig',
+    'django_summernote'
 ]
 
 MIDDLEWARE = [
