@@ -1,31 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="{% url 'signup' %}" method="post">
+{% extends "registration/base.html" %} {%block content%}
+<div class="bg-[#0f0f0f] py-4 px-4 text-white w-96 rounded-xl border border-slate-600">
+    <div class="text-center">
+        <h1 class="text-[#eab308] text-3xl font-extrabold">Sign up</h1>
+        <p class="text-slate-400">Join our community of faith and inspiration</p>
+    </div>
+    <form action="{% url 'signup' %}" method="post" >
         {%csrf_token%}
-        <div>
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" autocomplete="off">
+        <div class="mt-4">
+            <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+            <input type="text" id="username" name="username" autocomplete="off" class='grow bg-[#1f2937] mt-2 w-full py-2 px-4 text-white rounded-xl border border-slate-600' required>
         </div>
-        <div>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" autocomplete="off">
+        <div class="mt-4">
+            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+            <input type="email" id="email" name="email" autocomplete="off" class='grow bg-[#1f2937] mt-2 py-2 px-4 w-full text-white rounded-xl border border-slate-600' required>
         </div>
-        <div>
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" autocomplete="off">
+        <div class="mt-4">
+            <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+            <input type="password" id="password" name="password" autocomplete="off" class='grow bg-[#1f2937] mt-2 w-full py-2 px-4 text-white rounded-xl border border-slate-600' required>
         </div>
-        <div>
-            <label for="confirm_password">Confirm Password</label>
-            <input type="password" id="confirm_password" name="confirm_password" autocomplete="off">
+        <div class="mt-4">
+            <label for="confirm_password" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+            <input type="password" id="confirm_password" name="confirm_password" autocomplete="off" class='grow mt-2 w-full bg-[#1f2937] py-2 px-4 text-white rounded-xl border border-slate-600' required>
         </div>
-        <button type="submit">Sign up</button>
+        <button type="submit" class='grow bg-[#eab308] mt-4 py-2 px-4 text-white rounded-xl border border-slate-600 w-full'>Sign up</button>
     </form>
-    <p>Already have an account? <a href="{% url 'login' %}">Log in here</a></p>
-</body>
-</html>
+    <p class="mt-4">Already have an account? <a href="{% url 'login' %}" class="text-[#eab308]">Sign in</a></p>
+</div>
+
+{%endblock%}
