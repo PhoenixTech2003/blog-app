@@ -16,27 +16,29 @@
   <div class="ck-content">{{post.content|safe}}</div>
 
   
-  <hr class="border-slate-400">
+  <hr class="border border-slate-600">
   <br>
   <div class="flex justify-between ">
-    <p class="text-slate-400"><button class="text-slate-400 flex gap-2 items-center">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="gray">
+    <p class="text-slate-400">
+      <button class="text-slate-400 flex gap-2 items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="gray">
           <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-      </svg>{{post.total_likes}} Likes 
-    </button></p>
+        </svg>{{post.total_likes}} Likes 
+      </button>
+    </p>
     <p class="text-slate-400">{{post.total_comments}} Comments</p>
   </div>
 
   <br>
-  <hr class="border-slate-400">
+  <hr class="border border-slate-600">
   <div>
   {% if user.is_authenticated %}
     <form action="{% url 'like_blog_post' post.pk %}" method="post" class="text-white">
       {%csrf_token%}
       {% if user in post.likes.all %}
-        <button type="submit"> Unlike</button>
+        <button type="submit" class="bg-[#1f2937] text-white rounded-xl px-8 mt-4 font-bold"> Unlike</button>
       {% else %}
-        <button type="submite">Like</button>
+        <button type="submit" class="bg-[#eab308] text-white rounded-xl px-8 mt-4 font-bold">Like</button>
       {% endif %}
     </form>
 
@@ -45,17 +47,17 @@
     <form action="" method="post">
       {% csrf_token %}
       {{ form.as_p }}
-      <button type="submit" class="bg-[#eab308] text-white p-2 border-r mt-10 font-bold">Post Comment</button>
+      <button type="submit" class="bg-[#eab308] text-white p-2 rounded-xl mt-10 font-bold">Post Comment</button>
     </form>
   {% else %}
     <div>
-      <p class="text-white">{{post.total_likes}} Likes,  <a href="{% url 'login' %}">login to like and comment on the post</a></p>
+      <p class="text-white mt-4 italic" ><a href="{% url 'login' %}"> <span class="text-[#eab308] font-extrabold">Login </span>to like and comment on this post</a></p>
     </div>
   {% endif %}
   
   <h3 class="text-[#eab308] text-3xl font-extrabold">Comments</h3>
   {% for comment in comments%}
-  <div class="border border-white rounded-sm mt-4 p-4 text-slate-400">
+  <div class='grow bg-[#1f2937] py-2 px-4 mt-4 text-white rounded-xl border border-slate-600'>
     <p class="font-bold text-3xl text-white">{{comment.user_id.username}}</p>
     <p class="mt-4" >{{comment.content |safe}}</p>
   </div>
