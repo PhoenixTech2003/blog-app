@@ -20,6 +20,9 @@ class BlogPost(models.Model):
     def total_likes(self):
         return self.likes.count()
     
+    def total_comments(self):
+        return self.comment_set.count()
+
     def top_liked_posts(self):
         return self.objects.annotate(like_count=Count('likes')).order_by('-like_count')[:5]
     

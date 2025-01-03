@@ -1,0 +1,9 @@
+.note-editable {
+    background-color: black; 
+    color: white;
+    caret-color: white;
+}
+
+.note-placeholder {
+    color: gray;
+}
