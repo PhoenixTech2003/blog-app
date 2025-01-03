@@ -1,0 +1,46 @@
+{% load compress %} {% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Django + Tailwind CSS</title>
+    <script defer src="{% static 'blog_app/blogApp.js' %}"></script>
+    {% compress css %}
+    <link rel="stylesheet" href="{% static 'blog_app/output.css' %}" />
+    
+    {% endcompress %}
+  </head>
+  <body class="bg-[#111827] h-screen grid ">
+    
+      <div class='bg-[#2935468a] backdrop-blur-3xl hidden fixed z-50  w-96 menu  p-8'>
+        <div class='grid grid-rows-[0.5fr_2fr]'>
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" id="close">
+              <path fill='#eab308' d="M38 12.83 35.17 10 24 21.17 12.83 10 10 12.83 21.17 24 10 35.17 12.83 38 24 26.83 35.17 38 38 35.17 26.83 24z"></path>
+              <path fill="none" d="M0 0h48v48H0z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <nav class="grid grid-cols-3 px-10 md:flex md:justify-between items-center fixed w-full md:px-20 bg-[#11182757] z-30 backdrop-blur-md">
+        <div class="text-[#eab308] flex items-center justify-self-center font-extrabold text-2xl">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" id="Christian" width="60" height="60">
+            <path d="M50 12.5a6.236 6.236 0 0 0-6.25 6.25v14.583H29.167a6.236 6.236 0 0 0-6.25 6.25 6.236 6.236 0 0 0 6.25 6.25H43.75V81.25A6.236 6.236 0 0 0 50 87.5a6.236 6.236 0 0 0 6.25-6.25V45.833h14.583a6.236 6.236 0 0 0 6.25-6.25 6.236 6.236 0 0 0-6.25-6.25H56.25V18.75A6.236 6.236 0 0 0 50 12.5z" color="#000" overflow="visible" style="marker: none" fill="#eab308" class="color000000 svgShape"></path>
+          </svg>
+          <p>Faith</p>
+        </div>
+      </nav>
+    <div></div>
+    <div class="flex justify-center py-8 w-full">
+        {% block content %}{% endblock %}
+    </div>
+    
+    <footer class='bg-[#1f2937] grid  justify-center lg:flex lg:justify-between items-center py-8 px-6 mt-10'>
+      <div>
+        <p class='text-white'>&copy; {% now "Y" %} The Faith Blog. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
