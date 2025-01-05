@@ -33,6 +33,11 @@ def blog_post(request, postId):
     }
     return render(request,"blog_app/blogPost.html", context)
 
+def search_for_post(request):
+    search_query = request.GET.get('search_query','')
+    posts = BlogPost.objects.filter(title__icontains= search_query) if search_query else []
+    return render(request, 'blog_app/search.html', {'query': search_query, 'posts' : posts})
+
 def signup(request):
     if request.method == 'POST':
         username = request.POST['username']
