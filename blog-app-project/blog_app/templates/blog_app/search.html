@@ -1,0 +1,76 @@
+{% extends "blog_app/base.html" %}
+
+{%block content%}
+<main class="lg:px-16 grid">
+    {% if query %}
+    {% if posts %}
+
+    <section class="p-4 h-[70vh] grid items-center">
+        <div>
+            <h1 class = "text-4xl text-[#eab308] font-extrabold text-center p-4">
+               Search Results for "{{ query }}"
+            <h1>
+        </div>
+    </section>
+
+    <section>
+
+        <section class="grid grid-cols-2 xl:grid-cols-3 gap-6 p-4">
+            {% for blog in posts %}
+            <div class="bg-[#1f2937] py-6 px-4 rounded-xl grid">
+                
+                <p class="text-[#eab308] text-xl font-bold py-4">{{blog.title}}</p>
+                <img class="rounded-xl py-4 " src="{{blog.photo.url}}" alt="">
+                <div class="ck-content">
+                    
+                    {{blog.content|slice:'300'|safe}}.........
+
+                </div>
+                <div class="flex justify-between  py-6 items-center">
+                    <div class="flex gap-1 items-center">
+                        <svg width=20 height=20 xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="time" x="0" y="0" version="1.1" viewBox="0 0 29 29">
+                            <path fill="#94a3b8" d="M14.638 27c-6.893 0-12.5-5.607-12.5-12.5S7.745 2 14.638 2s12.5 5.607 12.5 12.5S21.53 27 14.638 27zm0-23c-5.79 0-10.5 4.71-10.5 10.5S8.848 25 14.638 25s10.5-4.71 10.5-10.5S20.427 4 14.638 4zm-.08 11.42h-6.42a1 1 0 1 1 0-2h5.42V6a1 1 0 1 1 2 0v8.42a1 1 0 0 1-1 1z"></path>
+                          </svg>
+                        <p class="text-slate-400">
+                            {{blog.created_at}}
+                        </p>
+                    </div>
+                    <a href="/v1/blog-app/{{blog.id}}">
+                        <button class="text-[#eab308] flex gap-2 items-center">
+                            
+                            <p>Read More</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 20 20" id="chevron" width=15 height=15>
+                                <path d="M13.25 10 6.109 2.58a.697.697 0 0 1 0-.979.68.68 0 0 1 .969 0l7.83 7.908a.697.697 0 0 1 0 .979l-7.83 7.908a.68.68 0 0 1-.969 0 .697.697 0 0 1 0-.979L13.25 10z" fill="#eab308"></path>
+                              </svg>
+                        </button>
+
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <section class="p-4 h-[70vh] grid items-center">
+                <div>
+                    <h1 class = "text-4xl text-[#eab308] font-extrabold text-center p-4">
+                      No Search Results found for "{{ query }}"
+                    <h1>
+                </div>
+            </section>
+            {% endif %}
+        {% else %}
+        <section class="p-4 h-[70vh] grid items-center">
+            <div>
+                <h1 class = "text-4xl text-[#eab308] font-extrabold text-center p-4">
+                  Please enter a search term 
+                <h1>
+                <form class="flex gap-4 px-48 py-4" method="get" action="{% url 'search' %}" role="search">
+                    <input placeholder="Search blog posts..." class='grow bg-[#1f2937] py-2 px-4 text-white rounded-xl border border-slate-600' name="search_query" required></input>
+                    <button class='bg-[#eab308] text-white font-medium px-8 rounded-md' type="submit" autocomplete="off">Search</button>
+                </form>
+            </div>
+        </section>
+        {% endif %}
+        </section>
+        </section>
+</main>
+{%endblock%}
